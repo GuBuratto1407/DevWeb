@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../script/cadastro.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assests/style.css" />
+    <title>Cadastre-se</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="nav">
+        <div class="nav-logo">
+          <p><a href="../index.html">DEVWEB.</a></p>
+        </div>
+        <!--NAV-LOGO-->
+        <div class="nav-menu">
+          <ul>
+            <li><a href="../index.html" class="link active">Home</a></li>
+            <li><a href="sobre.html" class="link">Sobre</a></li>
+            <li><a href="endereco.html" class="link">Endereço</a></li>
+            <li><a href="cadastro.html" class="link">Cadastro</a></li>
+            <li><a href="login.html" class="link">Login</a></li>
+          </ul>
+        </div>
+        <!--NAV-MENU-->
+        <div class="nav-menu-btn">
+          <i class="bx bx-menu"></i>
+        </div>
+        <!--NAV-MENU-BTN-->
+      </nav>
+      <!--NAV-->
+      <main>
+        <div class="box-form">
+          <div class="register-container" id="register">
+            <div class="top">
+              <h2>Faça seu cadastro</h2>
+            </div>
+            <form>
+              <div class="input-box">
+                <label for="name"></label>
+                <input
+                  type="text"
+                  class="input-field"
+                  id="name"
+                  name="name"
+                  placeholder="Nome completo"
+                  required 
+                />
+                <span id="name-error" style="display: none; color: red;">Por favor, insira seu nome completo.</span>
+                <script>
+                    // Função para validar o nome completo
+                    function validarNomeCompleto() {
+                        var nameInput = document.getElementById('name');
+                        var nameErrorSpan = document.getElementById('name-error');
+
+                        // Verifica se o valor do campo contém pelo menos dois termos separados por um espaço
+                        if (nameInput.value.split(' ').length < 2) {
+                            // Mostra a mensagem de erro se o nome não for completo
+                            nameErrorSpan.style.display = 'inline';
+                        } else {
+                            // Esconde a mensagem de erro se o nome for completo
+                            nameErrorSpan.style.display = 'none';
+                        }
+                    }
+
+                    // Adiciona um ouvinte de eventos para chamar a função de validação quando o campo de entrada é alterado
+                    document.getElementById('name').addEventListener('input', validarNomeCompleto);
+                </script>
+                <i class="bx bx-user"></i>
+              </div><!--INPUT-BOX-->
+              <div class="input-box">
+                <label for="lname"></label>
+                <input
+                  type="tel"
+                  class="input-field"
+                  id="cpf_cnpj"
+                  name="cpf_cnpj" 
+                  maxlength="11"
+                  placeholder="CPF ou CNPJ"
+                  required 
+                  pattern="\d*"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                />
+                <i class="bx bx-user"></i>
+              </div><!--INPUT-BOX-->
+              <div class="input-box">
+                <label for="lname"></label>
+                <input
+                  type="email"
+                  class="input-field"
+                  id="email"
+                  name="email"
+                  placeholder="E-mail"
+                  required 
+                />
+                <span id="email-error" style="display: none; color: red;">Por favor, insira um e-mail válido.</span>
+                <script>
+                    // Função para validar o e-mail
+                    function validarEmail() {
+                        var emailInput = document.getElementById('email');
+                        var emailErrorSpan = document.getElementById('email-error');
+                        
+                        if (!emailInput.checkValidity()) {
+                            // Mostra a mensagem de erro se o e-mail não for válido
+                            emailErrorSpan.style.display = 'inline';
+                        } else {
+                            // Esconde a mensagem de erro se o e-mail for válido
+                            emailErrorSpan.style.display = 'none';
+                        }
+                    }
+
+                    // Adiciona um ouvinte de eventos para chamar a função de validação quando o campo de entrada é alterado
+                    document.getElementById('email').addEventListener('input', validarEmail);
+                </script>
+
+                <i class="bx bx-envelope"></i>
+              </div><!--INPUT-BOX-->
+              <div class="input-box">
+                <label for="lname"></label>
+                <input type="date"
+                class="input-field"
+                id="birthday"
+                name="birthday"
+                placeholder="Nascimento"
+                required 
+                >
+                <i class="bx bx-balloon"></i>
+              </div><!--INPUT-BOX-->
+              <div class="input-box">
+                <label for="lname"></label>
+                <input type="password"
+                class="input-field"
+                id="password"
+                name="password"
+                placeholder="Senha"
+                required 
+                >
+                <i class="bx bx-lock-alt"></i>
+              </div><!--INPUT-BOX-->
+              <div class="label-term">
+                <label for="user_type">Concoda com os termos</label>
+                <select id="user_type" class="select-op" name="user_type">
+                  <option value="1">Sim</option>
+                  <option value="0">Não</option>
+                </select>
+              </div><!--LABEL-TERM-->
+              <div class="input-box">
+                <input
+                  type="button"
+                  class="submit"
+                  value="submit"
+                  onclick="cadastroUsuario();validarbirthday();"
+                />
+              </div><!--INPUT-BOX-->
+            </form>
+          </div><!--REGISTER-CONTAINER-->
+        </div><!--BOX-FORM-->
+      </main>
+    </div><!--WRAPPER-->
+  </body>
+</html>
